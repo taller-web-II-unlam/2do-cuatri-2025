@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row">
+        @for (item of cuadrados(); track $index) {
+        <div class="col">
+            <p>{{item.color}}</p>
+            <!-- <p>{{cuadrados().length}}</p> -->
+        </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary" (click)="setSignal()">
+                Set
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn btn-danger" (click)="updateSignal()">
+                Update
+            </button>
+        </div>
+        <!-- <div class="col">
+            <button class="btn btn-warning" (click)="mutateSignal()">
+                Mutate
+            </button>
+        </div> -->
+        <div class="col">
+            <button class="btn btn-dark" (click)="resetSignal()">
+                Reset
+            </button>
+        </div>
+    </div>
+</div>

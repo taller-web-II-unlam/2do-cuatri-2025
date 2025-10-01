@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="list-group">
+        @for(tecla of teclas; track tecla.numeroSonido; let i = $index){
+        <app-tecla (dad)="dad()" (eventEmitterEmitirTecla)="hacerMusica($event)" [numero]="tecla.tecla"
+          [color]="tecla.color"></app-tecla>
+        }
+      </div>
+    </div>
+  </div>
+</div>
