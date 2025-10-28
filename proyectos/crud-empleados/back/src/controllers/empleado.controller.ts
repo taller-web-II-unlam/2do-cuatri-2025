@@ -1,6 +1,7 @@
 import { type Request, type Response } from "express";
 import { EmpleadoService } from "../services/empleado.service.js";
 import { EmpleadoRepository } from "../repository/empleado.repository.js";
+import type { Empleado } from "../models/empleado.model.js";
 
 const empleadoRepository = new EmpleadoRepository();
 const empleadoService = new EmpleadoService(empleadoRepository);
@@ -13,6 +14,8 @@ export class EmpleadoController {
     public getEmpleados = async (req: Request, res: Response) => {
         try {
             const empleados = await empleadoService.obtenerEmpleados();
+            console.log(empleados);
+            
             res.status(200).json(empleados);
         } catch (error) {
             res.status(500).json({ message: "Error al obtener empleados", error })
@@ -44,9 +47,9 @@ export class EmpleadoController {
 
     public crearEmpleado = async (req: Request, res: Response) => {
         try {
-            const empleadoACrear = req.body
+            const newEmpleado:Empleado = req.body
             
-            const empleado = await empleadoService.crearEmpleado(empleadoACrear);
+            const empleado = await empleadoService.crearEmpleado(newEmpleado);
             res.status(201).json(empleado)
         } catch (error) {
             res.status(500).json({ message: "No se pudo crear el empleado", error })

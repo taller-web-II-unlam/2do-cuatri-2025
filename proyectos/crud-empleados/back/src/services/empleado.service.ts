@@ -1,3 +1,4 @@
+import type { Empleado } from "../models/empleado.model.js";
 import type { EmpleadoRepository } from "../repository/empleado.repository.js";
 
 export class EmpleadoService {
@@ -12,8 +13,8 @@ export class EmpleadoService {
         return await this.empleadoRepository.findEmpleadoById(id);
     }
 
-    async crearEmpleado(data: {[key:string]:any}){
-        const {nombre, id_empresa} = data;
+    async crearEmpleado(empleado:Empleado){
+        const {nombre, id_empresa} = empleado;
 
         console.log(nombre,id_empresa);
         if(!nombre || typeof nombre !== 'string'){
